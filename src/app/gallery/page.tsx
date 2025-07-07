@@ -1,6 +1,12 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // Install lucide-react or use any icons you prefer
 
 export default function Gallery() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const galleryItems = [
     {
       id: 1,
@@ -50,19 +56,55 @@ export default function Gallery() {
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Navigation */}
       <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0">
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="/" className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</Link>
+          <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>
         </div>
-        <ul className="flex gap-6 text-lg font-mono">
-          <li><Link href="/" className="hover:text-gray-300 transition-colors">Home</Link></li>
-          <li><Link href="/timeline" className="hover:text-gray-300 transition-colors">Timeline</Link></li>
-          <li><Link href="/gallery" className="text-white border-b-2 border-white">Gallery</Link></li>
-          <li><Link href="/blog" className="hover:text-gray-300 transition-colors">Blog</Link></li>
-          <li><Link href="/about" className="hover:text-gray-300 transition-colors">About</Link></li>
-          <li><Link href="/contact" className="hover:text-gray-300 transition-colors">Contact</Link></li>
+
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex gap-6 text-lg font-mono">
+          {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
+            <li key={i}>
+              <Link
+                href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                className={`hover:text-gray-300 transition-colors ${text === 'Home' ? 'text-white border-b-2 border-white' : 'text-white'}`}
+              >
+                {text}
+              </Link>
+            </li>
+          ))}
         </ul>
+
+        {/* Mobile Menu Toggle Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-white"
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {menuOpen && (
+        <div className="md:hidden w-full px-4 pb-4">
+          <ul className="flex flex-col gap-4 text-lg font-mono text-white bg-black rounded-md border border-gray-700 p-4">
+            {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
+              <li key={i}>
+                <Link
+                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                  className="block w-full hover:text-gray-300 transition-colors"
+                  onClick={() => setMenuOpen(false)} // Close menu on click
+                >
+                  {text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <main className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-5xl font-bold text-center mb-16">Project Gallery</h1>

@@ -1,110 +1,91 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // Install lucide-react or use any icons you prefer
 
 export default function Contact() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const contactInfo = [
     {
       type: 'Email',
-      value: 'hello@humanoid-project.com',
+      value: 'archerlin0530@gmail.com | kathermaa@gmail.com',
       icon: '✉️'
     },
     {
       type: 'GitHub',
-      value: 'github.com/humanoid-robot',
+      value: 'github.com/archerlinn | github.com/kathermaa',
       icon: '🐙'
     },
     {
       type: 'Twitter',
-      value: '@humanoid_robot',
+      value: '@not_yet',
       icon: '🐦'
     },
     {
       type: 'YouTube',
-      value: 'Humanoid Robot Project',
+      value: '@not_yet',
       icon: '📺'
     }
   ];
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Navigation */}
       <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0">
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="/" className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</Link>
+          <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>
         </div>
-        <ul className="flex gap-6 text-lg font-mono">
-          <li><Link href="/" className="hover:text-gray-300 transition-colors">Home</Link></li>
-          <li><Link href="/timeline" className="hover:text-gray-300 transition-colors">Timeline</Link></li>
-          <li><Link href="/gallery" className="hover:text-gray-300 transition-colors">Gallery</Link></li>
-          <li><Link href="/blog" className="hover:text-gray-300 transition-colors">Blog</Link></li>
-          <li><Link href="/about" className="hover:text-gray-300 transition-colors">About</Link></li>
-          <li><Link href="/contact" className="text-white border-b-2 border-white">Contact</Link></li>
+
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex gap-6 text-lg font-mono">
+          {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
+            <li key={i}>
+              <Link
+                href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                className={`hover:text-gray-300 transition-colors ${text === 'Home' ? 'text-white border-b-2 border-white' : 'text-white'}`}
+              >
+                {text}
+              </Link>
+            </li>
+          ))}
         </ul>
+
+        {/* Mobile Menu Toggle Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-white"
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {menuOpen && (
+        <div className="md:hidden w-full px-4 pb-4">
+          <ul className="flex flex-col gap-4 text-lg font-mono text-white bg-black rounded-md border border-gray-700 p-4">
+            {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
+              <li key={i}>
+                <Link
+                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                  className="block w-full hover:text-gray-300 transition-colors"
+                  onClick={() => setMenuOpen(false)} // Close menu on click
+                >
+                  {text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-5xl font-bold text-center mb-16">Get in Touch</h1>
 
         <div className="grid md:grid-cols-2 gap-12">
-          {/* Contact Form */}
-          <div>
-            <h2 className="text-2xl font-bold mb-6">Send us a Message</h2>
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="name" className="block text-sm font-medium mb-2">Name</label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-white"
-                  placeholder="Your name"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="email" className="block text-sm font-medium mb-2">Email</label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-white"
-                  placeholder="your.email@example.com"
-                />
-              </div>
-              
-              <div>
-                <label htmlFor="subject" className="block text-sm font-medium mb-2">Subject</label>
-                <select
-                  id="subject"
-                  name="subject"
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white focus:outline-none focus:border-white"
-                >
-                  <option value="">Select a subject</option>
-                  <option value="general">General Inquiry</option>
-                  <option value="collaboration">Collaboration</option>
-                  <option value="technical">Technical Question</option>
-                  <option value="media">Media/Press</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              
-              <div>
-                <label htmlFor="message" className="block text-sm font-medium mb-2">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={6}
-                  className="w-full px-4 py-3 bg-gray-900 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-white resize-none"
-                  placeholder="Tell us about your inquiry..."
-                ></textarea>
-              </div>
-              
-              <button
-                type="submit"
-                className="w-full px-8 py-3 bg-white text-black font-bold hover:bg-gray-200 transition-colors"
-              >
-                Send Message
-              </button>
-            </form>
-          </div>
 
           {/* Contact Information */}
           <div>

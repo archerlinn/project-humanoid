@@ -1,87 +1,117 @@
+'use client';
+
 import Link from 'next/link';
+import { useState } from 'react';
+import { Menu, X } from 'lucide-react'; // Install lucide-react or use any icons you prefer
 
 export default function About() {
+  const [menuOpen, setMenuOpen] = useState(false);
+
   const specifications = [
     {
       category: 'Physical Dimensions',
       specs: [
-        'Height: 180cm (5&apos;11")',
-        'Weight: 75kg (165 lbs)',
-        'Material: Aerospace-grade aluminum and carbon fiber',
-        'Degrees of Freedom: 32 DOF'
+        'Height: TBD',
+        'Weight: TBD',
+        'Material: TBD',
+        'Degrees of Freedom: TBD'
       ]
     },
     {
       category: 'Electronics',
       specs: [
-        'Main Processor: NVIDIA Jetson Orin',
-        'Sensors: LiDAR, IMU, Force sensors, Vision cameras',
-        'Battery: 48V Lithium-ion, 2-hour runtime',
-        'Communication: WiFi 6, Bluetooth 5.0'
+        'Main Processor: TBD',
+        'Sensors: TBD',
+        'Battery: TBD',
+        'Communication: TBD'
       ]
     },
     {
       category: 'Software',
       specs: [
-        'Operating System: Ubuntu 22.04 LTS',
-        'AI Framework: ROS2 + PyTorch',
-        'Computer Vision: OpenCV + YOLO',
-        'Motion Planning: MoveIt2'
+        'Operating System: TBD',
+        'AI Framework: TBD',
+        'Computer Vision: TBD',
+        'Motion Planning: TBD'
       ]
     },
     {
       category: 'Capabilities',
       specs: [
-        'Autonomous navigation',
-        'Object recognition and manipulation',
-        'Human interaction and speech recognition',
-        'Dynamic balance and walking'
+        'Autonomous navigation: TBD',
+        'Object recognition and manipulation: TBD',
+        'Human interaction and speech recognition: TBD',
+        'Dynamic balance and walking: TBD'
       ]
     }
   ];
 
   const teamMembers = [
     {
-      name: 'Alex Chen',
-      role: 'Lead Robotics Engineer',
-      expertise: 'Mechanical Design, Control Systems',
-      description: '10+ years experience in humanoid robotics with focus on dynamic locomotion and balance control.'
+      name: 'Archer Lin',
+      role: 'Robotics Engineer',
+      expertise: 'Expertise: Robotics Engineering',
+      description: 'Currently a Master student in Robotics Engineering at Purdue University.'
     },
     {
-      name: 'Sarah Kim',
-      role: 'AI/ML Specialist',
-      expertise: 'Computer Vision, Machine Learning',
-      description: 'PhD in Computer Science specializing in computer vision and autonomous systems for robotics.'
-    },
-    {
-      name: 'Marcus Rodriguez',
-      role: 'Electronics Engineer',
-      expertise: 'Circuit Design, Sensor Integration',
-      description: 'Expert in embedded systems and sensor fusion for real-time robot control applications.'
-    },
-    {
-      name: 'Dr. Emily Watson',
-      role: 'Research Director',
-      expertise: 'Robotics Research, Project Management',
-      description: 'Leading researcher in human-robot interaction with 15+ years in academic and industry robotics.'
+      name: 'Katherine Ma',
+      role: 'Computer Engineer',
+      expertise: 'Expertise: Computer Engineering',
+      description: 'Currently a Bachelor student in Computer Engineering at Purdue University.'
     }
   ];
 
   return (
     <div className="min-h-screen bg-black text-white">
+      {/* Navigation */}
       <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0">
+        {/* Logo */}
         <div className="flex-shrink-0">
-          <Link href="/" className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</Link>
+          <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>
         </div>
-        <ul className="flex gap-6 text-lg font-mono">
-          <li><Link href="/" className="hover:text-gray-300 transition-colors">Home</Link></li>
-          <li><Link href="/timeline" className="hover:text-gray-300 transition-colors">Timeline</Link></li>
-          <li><Link href="/gallery" className="hover:text-gray-300 transition-colors">Gallery</Link></li>
-          <li><Link href="/blog" className="hover:text-gray-300 transition-colors">Blog</Link></li>
-          <li><Link href="/about" className="text-white border-b-2 border-white">About</Link></li>
-          <li><Link href="/contact" className="hover:text-gray-300 transition-colors">Contact</Link></li>
+
+        {/* Desktop Nav */}
+        <ul className="hidden md:flex gap-6 text-lg font-mono">
+          {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
+            <li key={i}>
+              <Link
+                href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                className={`hover:text-gray-300 transition-colors ${text === 'Home' ? 'text-white border-b-2 border-white' : 'text-white'}`}
+              >
+                {text}
+              </Link>
+            </li>
+          ))}
         </ul>
+
+        {/* Mobile Menu Toggle Button */}
+        <button
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-white"
+          aria-label="Toggle menu"
+        >
+          {menuOpen ? <X size={28} /> : <Menu size={28} />}
+        </button>
       </nav>
+
+      {/* Mobile Menu Dropdown */}
+      {menuOpen && (
+        <div className="md:hidden w-full px-4 pb-4">
+          <ul className="flex flex-col gap-4 text-lg font-mono text-white bg-black rounded-md border border-gray-700 p-4">
+            {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
+              <li key={i}>
+                <Link
+                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
+                  className="block w-full hover:text-gray-300 transition-colors"
+                  onClick={() => setMenuOpen(false)} // Close menu on click
+                >
+                  {text}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
 
       <main className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-5xl font-bold text-center mb-16">About the Project</h1>
@@ -99,8 +129,7 @@ export default function About() {
               </p>
               <p className="text-gray-300 leading-relaxed">
                                  The goal is to push the boundaries of what&apos;s possible in humanoid robotics, creating a 
-                 platform that can serve as a foundation for future research and applications in healthcare, 
-                 education, and industrial automation.
+                 platform that can serve as a foundation for future research and applications in the world.
               </p>
             </div>
             <div className="bg-gray-900 h-64 flex items-center justify-center border border-gray-700">
