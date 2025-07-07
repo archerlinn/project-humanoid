@@ -10,12 +10,21 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
-      title: 'Complete Guide to K-SCALE Lab\'s Humanoid Walking RL Training Code',
-      excerpt: 'A deep dive into our first reinforcement learning pipeline (using K-SCALE Lab\'s K-Sim-Gym) for training humanoid robots to walk using PPO with JAX/Equinox.',
+      title: 'Teaching Robots to Walk: Our First Steps into Humanoid AI',
+      excerpt: 'Part 1 of our humanoid building journey - exploring K-Scale Labs\' KSimGym framework and understanding the fundamentals of humanoid locomotion through reinforcement learning.',
       date: '2025-07-07',
-      category: 'Technical Deep Dive',
-      readTime: '10 min read',
+      category: 'AI/ML',
+      readTime: '8 min read',
       slug: 'humanoid-walking-training'
+    },
+    {
+      id: 2,
+      title: 'Complete Guide to PPO, RNN, and Actor-Critic Methods',
+      excerpt: 'A comprehensive technical deep dive into the algorithms behind modern reinforcement learning - understanding how PPO, RNNs, and Actor-Critic methods work together.',
+      date: '2025-07-07',
+      category: 'AI/ML',
+      readTime: '15 min read',
+      slug: 'ppo-rnn-actor-critic-guide'
     }
   ];
 
@@ -109,7 +118,7 @@ export default function Blog() {
               </div>
               
               <h2 className="text-2xl font-bold mb-3 hover:text-gray-300 transition-colors cursor-pointer">
-                <Link href="/blog/humanoid-walking-training">
+                <Link href={`/blog/${post.slug}`}>
                   {post.title}
                 </Link>
               </h2>
@@ -119,7 +128,7 @@ export default function Blog() {
               </p>
               
               <Link 
-                href="/blog/humanoid-walking-training"
+                href={`/blog/${post.slug}`}
                 className="text-white border border-white px-4 py-2 hover:bg-white hover:text-black transition-colors inline-block"
               >
                 Read Full Article →
