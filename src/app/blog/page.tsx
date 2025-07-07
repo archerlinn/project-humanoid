@@ -56,8 +56,10 @@ export default function Blog() {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <nav className="w-full max-w-4xl mx-auto flex justify-between items-center py-6 px-4 md:px-0">
-        <Link href="/" className="text-2xl font-bold text-white tracking-widest">HUMANOID</Link>
+      <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0">
+        <div className="flex-shrink-0">
+          <Link href="/" className="text-2xl font-bold text-white tracking-widest">BEYOND HUMANOID</Link>
+        </div>
         <ul className="flex gap-6 text-lg font-mono">
           <li><Link href="/" className="hover:text-gray-300 transition-colors">Home</Link></li>
           <li><Link href="/timeline" className="hover:text-gray-300 transition-colors">Timeline</Link></li>
