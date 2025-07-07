@@ -5,7 +5,7 @@ export default function Home() {
     <div className="relative min-h-screen flex flex-col items-center justify-center bg-black">
       <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0">
         <div className="flex-shrink-0">
-          <span className="text-2xl font-bold text-white tracking-widest">BEYOND HUMANOID</span>
+          <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>
         </div>
         <ul className="flex gap-6 text-lg font-mono">
           <li><Link href="/" className="text-white border-b-2 border-white">Home</Link></li>
