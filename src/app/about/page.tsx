@@ -5,7 +5,7 @@ export default function About() {
     {
       category: 'Physical Dimensions',
       specs: [
-        'Height: 180cm (5\'11")',
+        'Height: 180cm (5&apos;11")',
         'Weight: 75kg (165 lbs)',
         'Material: Aerospace-grade aluminum and carbon fiber',
         'Degrees of Freedom: 32 DOF'
@@ -96,9 +96,9 @@ export default function About() {
                 artificial intelligence to create a robot that can walk, interact, and learn.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                The goal is to push the boundaries of what's possible in humanoid robotics, creating a 
-                platform that can serve as a foundation for future research and applications in healthcare, 
-                education, and industrial automation.
+                                 The goal is to push the boundaries of what&apos;s possible in humanoid robotics, creating a 
+                 platform that can serve as a foundation for future research and applications in healthcare, 
+                 education, and industrial automation.
               </p>
             </div>
             <div className="bg-gray-900 h-64 flex items-center justify-center border border-gray-700">
@@ -148,7 +148,7 @@ export default function About() {
           <p className="text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
             To advance the field of humanoid robotics through innovative engineering, 
             cutting-edge AI research, and open collaboration. We believe that humanoid 
-            robots have the potential to transform how we live and work, and we're 
+            robots have the potential to transform how we live and work, and we&apos;re 
             committed to making this vision a reality.
           </p>
         </section>

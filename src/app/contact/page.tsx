@@ -151,7 +151,7 @@ export default function Contact() {
             <div className="border border-gray-700 p-6">
               <h3 className="text-xl font-bold mb-3">When will the robot be completed?</h3>
               <p className="text-gray-300">
-                We're targeting completion by Q2 2025. Check our timeline page for detailed milestones.
+                We&apos;re targeting completion by Q2 2025. Check our timeline page for detailed milestones.
               </p>
             </div>
             <div className="border border-gray-700 p-6">
