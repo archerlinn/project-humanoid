@@ -36,7 +36,7 @@ export default function Home() {
       </div>
 
       {/* Navigation */}
-      <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0 relative z-10">
+      <nav className="w-full max-w-6xl mx-auto flex justify-between items-center py-6 px-4 md:px-0 relative z-50">
         {/* Logo */}
         <div className="flex-shrink-0">
           <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>

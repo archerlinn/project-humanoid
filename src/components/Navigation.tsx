@@ -79,7 +79,7 @@ export default function Navigation() {
 
       {/* Mobile Menu Dropdown */}
       {menuOpen && (
-        <div className="md:hidden absolute top-full right-0 mt-2 w-56 sm:w-64 bg-black rounded-md border border-gray-700 shadow-lg z-50 max-h-[80vh] overflow-y-auto">
+        <div className="md:hidden absolute top-full right-0 mt-2 w-56 sm:w-64 bg-black rounded-md border border-gray-700 shadow-lg z-[9999] max-h-[80vh] overflow-y-auto">
           <ul className="flex flex-col p-2">
             {navItems.map((item) => (
               <li key={item.text}>
