@@ -1,6 +1,7 @@
 'use client';
 
 import Navigation from '../../components/Navigation';
+import { getAssetPath } from '../../utils/paths';
 
 export default function Gallery() {
   const galleryItems = [
@@ -10,7 +11,7 @@ export default function Gallery() {
       description: 'Initial reinforcement learning training session for KBot humanoid robot',
       category: 'AI/ML',
       type: 'video',
-      media: '/screencast-2025-07-09-143856.webm'
+      media: getAssetPath('/screencast-2025-07-09-143856.webm')
     },
     {
       id: 2,
@@ -18,7 +19,7 @@ export default function Gallery() {
       description: 'Progress update showing KBot after 100 training steps',
       category: 'AI/ML',
       type: 'video',
-      media: '/screencast-2025-07-09-140425.webm'
+      media: getAssetPath('/screencast-2025-07-09-140425.webm')
     },
     {
       id: 3,
@@ -26,7 +27,7 @@ export default function Gallery() {
       description: 'Initial training session for ZBot humanoid robot',
       category: 'AI/ML',
       type: 'video',
-      media: '/screencast-2025-07-09-142345.webm'
+      media: getAssetPath('/screencast-2025-07-09-142345.webm')
     },
     {
       id: 4,
@@ -34,7 +35,7 @@ export default function Gallery() {
       description: 'Advanced training progress showing ZBot after 200 training steps',
       category: 'AI/ML',
       type: 'video',
-      media: '/screencast-2025-07-09-140625.webm'
+      media: getAssetPath('/screencast-2025-07-09-140625.webm')
     },
     {
       id: 5,

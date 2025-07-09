@@ -2,13 +2,14 @@
 
 import Link from 'next/link';
 import Navigation from '../components/Navigation';
+import { getAssetPath } from '../utils/paths';
 
 export default function Home() {
   const videos = [
-    '/screencast-2025-07-09-143856.webm',
-    '/screencast-2025-07-09-140425.webm',
-    '/screencast-2025-07-09-142345.webm',
-    '/screencast-2025-07-09-140625.webm'
+    getAssetPath('/screencast-2025-07-09-143856.webm'),
+    getAssetPath('/screencast-2025-07-09-140425.webm'),
+    getAssetPath('/screencast-2025-07-09-142345.webm'),
+    getAssetPath('/screencast-2025-07-09-140625.webm')
   ];
 
   return (
