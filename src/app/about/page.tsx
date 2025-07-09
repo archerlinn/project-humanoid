@@ -97,7 +97,7 @@ export default function About() {
                 loop
                 playsInline
               >
-                <source src={getAssetPath('/screencast-2025-07-09-143856.webm')} type="video/webm" />
+                <source src={getAssetPath('/screencast-2025-07-09-140425.webm')} type="video/webm" />
               </video>
             </div>
           </div>
