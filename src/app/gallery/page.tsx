@@ -1,58 +1,92 @@
 'use client';
 
-import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // Install lucide-react or use any icons you prefer
+import Navigation from '../../components/Navigation';
 
 export default function Gallery() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const galleryItems = [
     {
       id: 1,
-      title: 'Initial CAD Design',
-      description: 'First 3D model of the robot structure',
-      category: 'Design',
-      image: '/placeholder-1.jpg'
+      title: 'KBot RL Training - Step 1',
+      description: 'Initial reinforcement learning training session for KBot humanoid robot',
+      category: 'AI/ML',
+      type: 'video',
+      media: '/screencast-2025-07-09-143856.webm'
     },
     {
       id: 2,
-      title: 'Mechanical Assembly',
-      description: 'Early prototype assembly process',
-      category: 'Assembly',
-      image: '/placeholder-2.jpg'
+      title: 'KBot RL Training - Step 100',
+      description: 'Progress update showing KBot after 100 training steps',
+      category: 'AI/ML',
+      type: 'video',
+      media: '/screencast-2025-07-09-140425.webm'
     },
     {
       id: 3,
-      title: 'Electronics Integration',
-      description: 'Motor control board installation',
-      category: 'Electronics',
-      image: '/placeholder-3.jpg'
+      title: 'ZBot Training - Step 1',
+      description: 'Initial training session for ZBot humanoid robot',
+      category: 'AI/ML',
+      type: 'video',
+      media: '/screencast-2025-07-09-142345.webm'
     },
     {
       id: 4,
-      title: 'Sensor Testing',
-      description: 'Testing various sensor configurations',
-      category: 'Testing',
-      image: '/placeholder-4.jpg'
+      title: 'ZBot Training - Step 200',
+      description: 'Advanced training progress showing ZBot after 200 training steps',
+      category: 'AI/ML',
+      type: 'video',
+      media: '/screencast-2025-07-09-140625.webm'
     },
     {
       id: 5,
-      title: 'Software Development',
-      description: 'AI algorithm development workspace',
-      category: 'Software',
-      image: '/placeholder-5.jpg'
+      title: 'Initial CAD Design',
+      description: 'First 3D model of the robot structure',
+      category: 'Design',
+      type: 'image',
+      media: '/placeholder-1.jpg'
     },
     {
       id: 6,
+      title: 'Mechanical Assembly',
+      description: 'Early prototype assembly process',
+      category: 'Assembly',
+      type: 'image',
+      media: '/placeholder-2.jpg'
+    },
+    {
+      id: 7,
+      title: 'Electronics Integration',
+      description: 'Motor control board installation',
+      category: 'Electronics',
+      type: 'image',
+      media: '/placeholder-3.jpg'
+    },
+    {
+      id: 8,
+      title: 'Sensor Testing',
+      description: 'Testing various sensor configurations',
+      category: 'Testing',
+      type: 'image',
+      media: '/placeholder-4.jpg'
+    },
+    {
+      id: 9,
+      title: 'Software Development',
+      description: 'AI algorithm development workspace',
+      category: 'Software',
+      type: 'image',
+      media: '/placeholder-5.jpg'
+    },
+    {
+      id: 10,
       title: 'Final Prototype',
       description: 'Complete robot ready for testing',
       category: 'Prototype',
-      image: '/placeholder-6.jpg'
+      type: 'image',
+      media: '/placeholder-6.jpg'
     }
   ];
 
-  const categories = ['All', 'Design', 'Assembly', 'Electronics', 'Testing', 'Software', 'Prototype'];
+  const categories = ['All', 'AI/ML', 'Design', 'Assembly', 'Electronics', 'Testing', 'Software', 'Prototype'];
 
   return (
     <div className="min-h-screen bg-black text-white">
@@ -63,48 +97,8 @@ export default function Gallery() {
           <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>
         </div>
 
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-6 text-lg font-mono">
-          {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
-            <li key={i}>
-              <Link
-                href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
-                className={`hover:text-gray-300 transition-colors ${text === 'Home' ? 'text-white border-b-2 border-white' : 'text-white'}`}
-              >
-                {text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Menu Toggle Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <Navigation />
       </nav>
-
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden w-full px-4 pb-4">
-          <ul className="flex flex-col gap-4 text-lg font-mono text-white bg-black rounded-md border border-gray-700 p-4">
-            {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
-              <li key={i}>
-                <Link
-                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
-                  className="block w-full hover:text-gray-300 transition-colors"
-                  onClick={() => setMenuOpen(false)} // Close menu on click
-                >
-                  {text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <main className="max-w-6xl mx-auto px-4 py-12">
         <h1 className="text-5xl font-bold text-center mb-16">Project Gallery</h1>
@@ -127,8 +121,20 @@ export default function Gallery() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {galleryItems.map((item) => (
             <div key={item.id} className="group cursor-pointer">
-              <div className="bg-gray-900 h-64 mb-4 flex items-center justify-center border border-gray-700 hover:border-white transition-colors">
-                <span className="text-gray-500 text-lg">Image Placeholder</span>
+              <div className="bg-gray-900 h-64 mb-4 flex items-center justify-center border border-gray-700 hover:border-white transition-colors overflow-hidden">
+                {item.type === 'video' ? (
+                  <video
+                    className="w-full h-full object-cover"
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                  >
+                    <source src={item.media} type="video/webm" />
+                  </video>
+                ) : (
+                  <span className="text-gray-500 text-lg">Image Placeholder</span>
+                )}
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
@@ -138,6 +144,12 @@ export default function Gallery() {
                   </span>
                 </div>
                 <p className="text-gray-300 text-sm">{item.description}</p>
+                {item.type === 'video' && (
+                  <div className="flex items-center gap-2 text-xs text-gray-400">
+                    <span>🎥</span>
+                    <span>Training Video</span>
+                  </div>
+                )}
               </div>
             </div>
           ))}

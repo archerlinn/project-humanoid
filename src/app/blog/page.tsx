@@ -1,12 +1,9 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
-import { Menu, X } from 'lucide-react'; // Install lucide-react or use any icons you prefer
+import Navigation from '../../components/Navigation';
 
 export default function Blog() {
-  const [menuOpen, setMenuOpen] = useState(false);
-
   const blogPosts = [
     {
       id: 1,
@@ -39,48 +36,8 @@ export default function Blog() {
           <span className="text-2xl font-bold text-white tracking-widest">BUILDING HUMANOID</span>
         </div>
 
-        {/* Desktop Nav */}
-        <ul className="hidden md:flex gap-6 text-lg font-mono">
-          {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
-            <li key={i}>
-              <Link
-                href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
-                className={`hover:text-gray-300 transition-colors ${text === 'Blog' ? 'text-white border-b-2 border-white' : 'text-white'}`}
-              >
-                {text}
-              </Link>
-            </li>
-          ))}
-        </ul>
-
-        {/* Mobile Menu Toggle Button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="md:hidden text-white"
-          aria-label="Toggle menu"
-        >
-          {menuOpen ? <X size={28} /> : <Menu size={28} />}
-        </button>
+        <Navigation />
       </nav>
-
-      {/* Mobile Menu Dropdown */}
-      {menuOpen && (
-        <div className="md:hidden w-full px-4 pb-4">
-          <ul className="flex flex-col gap-4 text-lg font-mono text-white bg-black rounded-md border border-gray-700 p-4">
-            {['Home', 'Timeline', 'Gallery', 'Blog', 'About', 'Contact'].map((text, i) => (
-              <li key={i}>
-                <Link
-                  href={text === 'Home' ? '/' : `/${text.toLowerCase()}`}
-                  className="block w-full hover:text-gray-300 transition-colors"
-                  onClick={() => setMenuOpen(false)}
-                >
-                  {text}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      )}
 
       <main className="max-w-4xl mx-auto px-4 py-12">
         <h1 className="text-5xl font-bold text-center mb-16">Project Blog</h1>
