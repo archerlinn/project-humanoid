@@ -7,6 +7,15 @@ export default function Blog() {
   const blogPosts = [
     {
       id: 1,
+      title: 'I Was Sick But Still in Founder Mode — Here\'s What I Did',
+      excerpt: 'A personal reflection on staying productive while recovering from illness - finding the balance between rest and continued progress on the humanoid project.',
+      date: '2025-07-09',
+      category: 'Founder Life',
+      readTime: '5 min read',
+      slug: 'sick-founder-mode'
+    },
+    {
+      id: 2,
       title: 'Teaching Robots to Walk: Our First Steps into Humanoid AI',
       excerpt: 'Part 1 of our humanoid building journey - exploring K-Scale Labs\' KSimGym framework and understanding the fundamentals of humanoid locomotion through reinforcement learning.',
       date: '2025-07-07',
@@ -15,7 +24,7 @@ export default function Blog() {
       slug: 'humanoid-walking-training'
     },
     {
-      id: 2,
+      id: 3,
       title: 'Complete Guide to PPO, RNN, and Actor-Critic Methods',
       excerpt: 'A comprehensive technical deep dive into the algorithms behind modern reinforcement learning - understanding how PPO, RNNs, and Actor-Critic methods work together.',
       date: '2025-07-07',
@@ -25,7 +34,7 @@ export default function Blog() {
     }
   ];
 
-  const categories = ['All', 'Project Overview', 'Engineering', 'Electronics', 'AI/ML', 'Testing', 'Planning'];
+  const categories = ['All', 'Project Overview', 'Engineering', 'Electronics', 'AI/ML', 'Testing', 'Planning', 'Founder Life'];
 
   return (
     <div className="min-h-screen bg-black text-white">
