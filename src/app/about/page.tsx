@@ -1,6 +1,7 @@
 'use client';
 
 import Navigation from '../../components/Navigation';
+import { getAssetPath } from '../../utils/paths';
 
 export default function About() {
   const specifications = [
@@ -88,8 +89,16 @@ export default function About() {
                  platform that can serve as a foundation for future research and applications in the world.
               </p>
             </div>
-            <div className="bg-gray-900 h-64 flex items-center justify-center border border-gray-700">
-              <span className="text-gray-500 text-lg">Project Image</span>
+            <div className="bg-gray-900 h-64 flex items-center justify-center border border-gray-700 overflow-hidden">
+              <video
+                className="w-full h-full object-cover"
+                autoPlay
+                muted
+                loop
+                playsInline
+              >
+                <source src={getAssetPath('/screencast-2025-07-09-143856.webm')} type="video/webm" />
+              </video>
             </div>
           </div>
         </section>
